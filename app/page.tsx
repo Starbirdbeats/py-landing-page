@@ -9,6 +9,9 @@ import { CircularGallery } from "@/components/circular-gallery"
 import { Accordion, AccordionContent, AccordionItem, AccordionTrigger } from "@/components/ui/accordion"
 import { MacbookScrollDemo } from '@/components/macbook-scroll';
 import TabsDemo from "@/components/tabs"
+import { WavyBackground } from "@/components/ui/wavy-background"
+import { HoverEffect } from "@/components/ui/card-hover-effect"
+import { insights } from "@/utils/insights"
 
 export default function Home() {
   const [scrolled, setScrolled] = useState(false)
@@ -173,67 +176,28 @@ export default function Home() {
       {/* How It Works Section - Mimicking the provided image */}
       <section
         id="how-it-works"
-        className="w-full py-12 md:py-24 lg:py-32 bg-purple-100"
+        className="w-full py-12 md:py-24 lg:py-32 bg-white border-2 border-red-500"
       >
-        <div className="container px-4 md:px-6">
-          <div className="bg-white rounded-3xl p-8 md:p-12">
-            <h2 className="text-3xl font-bold tracking-wider text-center mb-12">
-              Where your needs and our product meet
-            </h2>
-            <div className="grid grid-cols-1 md:grid-cols-3 gap-8">
-              <div className="flex flex-col items-center text-center">
-                <div className="mb-4">
-                  <Image
-                    src="/calendar.png"
-                    alt="Automated Rate Management"
-                    width={120}
-                    height={120}
-                    className="mx-auto"
-                  />
-                </div>
-                <h3 className="text-xl font-bold mb-2">
-                  Automated Rate Management
-                </h3>
-                <p className="text-gray-500">
-                  Set your price bands once and let our algorithm suggest
-                  optimal rates based on market demand.
-                </p>
-              </div>
-              <div className="flex flex-col items-center text-center">
-                <div className="mb-4">
-                  <Image
-                    src="/step1.png"
-                    alt="Seamless Integration"
-                    width={120}
-                    height={120}
-                    className="mx-auto"
-                  />
-                </div>
-                <h3 className="text-xl font-bold mb-2">Seamless Integration</h3>
-                <p className="text-gray-500">
-                  Connect with Semper PMS and push rate changes to all your OTAs
-                  with a single click.
-                </p>
-              </div>
-              <div className="flex flex-col items-center text-center">
-                <div className="mb-4">
-                  <Image
-                    src="/demand.png"
-                    alt="Data-Driven Insights"
-                    width={120}
-                    height={120}
-                    className="mx-auto"
-                  />
-                </div>
-                <h3 className="text-xl font-bold mb-2">Data-Driven Insights</h3>
-                <p className="text-gray-500">
-                  Make informed decisions with competitor analysis and
-                  performance tracking tools.
-                </p>
+        <WavyBackground
+          className="flex max-w-7xl mx-auto pb-20"
+          backgroundFill="white"
+          containerClassName="relative"
+          colors={['#2fa5df', '#0080ff', '#00a8ff', '#0066cc']}
+        >
+          <div className="container px-4 md:px-6 max-w-[1200px] space-y-4">
+            <div className="bg-none p-8 md:p-12">
+              <h2 className="text-6xl font-bold tracking-wider text-center mb-12">
+                Where your needs and our product meet
+              </h2>
+              <div className="max-w-5xl mx-auto px-8">
+                <HoverEffect
+                  items={insights}
+                  className=""
+                />
               </div>
             </div>
           </div>
-        </div>
+        </WavyBackground>
       </section>
 
       {/* Pricing Section */}
