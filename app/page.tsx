@@ -12,6 +12,7 @@ import TabsDemo from "@/components/tabs"
 import { WavyBackground } from "@/components/ui/wavy-background"
 import { HoverEffect } from "@/components/ui/card-hover-effect"
 import { insights } from "@/utils/insights"
+import RotatingText from "@/components/jsrepo/RotatingText/RotatingText"
 
 export default function Home() {
   const [scrolled, setScrolled] = useState(false)
@@ -173,10 +174,10 @@ export default function Home() {
         </div>
       </section>
 
-      {/* How It Works Section - Mimicking the provided image */}
+      {/* How It Works Section */}
       <section
         id="how-it-works"
-        className="w-full py-12 md:py-24 lg:py-32 bg-white border-2 border-red-500"
+        className="w-full py-12 md:py-24 lg:py-32 bg-white"
       >
         <WavyBackground
           className="flex max-w-7xl mx-auto pb-20"
@@ -187,13 +188,30 @@ export default function Home() {
           <div className="container px-4 md:px-6 max-w-[1200px] space-y-4">
             <div className="bg-none p-8 md:p-12">
               <h2 className="text-6xl font-bold tracking-wider text-center mb-12">
-                Where your needs and our product meet
+                Where your{' '}
+                <RotatingText
+                  texts={[
+                    'needs',
+                    'vision',
+                    'strategy',
+                    'objectives',
+                    'priorities',
+                    'targets',
+                  ]}
+                  mainClassName="inline-block px-10 sm:px-2 md:px-3 bg-[#2fa5df] text-black overflow-hidden py-1 sm:py-1 md:py-2 justify-center rounded-lg w-auto"
+                  staggerFrom={'last'}
+                  initial={{ y: '100%' }}
+                  animate={{ y: 0 }}
+                  exit={{ y: '-120%' }}
+                  staggerDuration={0.025}
+                  splitLevelClassName="overflow-hidden pb-0.5 sm:pb-1 md:pb-1"
+                  transition={{ type: 'spring', damping: 30, stiffness: 400 }}
+                  rotationInterval={5000}
+                />{' '}
+                and our product meet
               </h2>
               <div className="max-w-5xl mx-auto px-8">
-                <HoverEffect
-                  items={insights}
-                  className=""
-                />
+                <HoverEffect items={insights} className="" />
               </div>
             </div>
           </div>
