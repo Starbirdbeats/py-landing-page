@@ -3,11 +3,12 @@
 import Image from "next/image"
 import Link from "next/link"
 import { Button } from "@/components/ui/button"
-import { Check, BarChart2, Calendar, LineChart, Users, Settings } from "lucide-react"
+import { Check, BarChart2, Calendar, LineChart, Users, Settings, BarChart } from "lucide-react"
 import { useState, useEffect } from "react"
 import { CircularGallery } from "@/components/circular-gallery"
 import { Accordion, AccordionContent, AccordionItem, AccordionTrigger } from "@/components/ui/accordion"
 import { MacbookScrollDemo } from '@/components/macbook-scroll';
+import TabsDemo from "@/components/tabs"
 
 export default function Home() {
   const [scrolled, setScrolled] = useState(false)
@@ -20,40 +21,6 @@ export default function Home() {
     window.addEventListener("scroll", handleScroll)
     return () => window.removeEventListener("scroll", handleScroll)
   }, [])
-
-  const features = [
-    {
-      icon: <BarChart2 className="h-6 w-6 text-primary" />,
-      title: "Automated Rate Pushing",
-      description: "Update your prices instantly and push changes to connected OTAs with a single click.",
-    },
-    {
-      icon: <Calendar className="h-6 w-6 text-primary" />,
-      title: "Semper PMS Integration",
-      description: "Seamless data fetching from Semper ensures accurate availability and occupancy information.",
-    },
-    {
-      icon: <LineChart className="h-6 w-6 text-primary" />,
-      title: "Competitor Analysis",
-      description: "Compare your rates against a selected set of competitors to stay ahead of market trends.",
-    },
-    {
-      icon: <Users className="h-6 w-6 text-primary" />,
-      title: "Demand & Performance Tracking",
-      description:
-        "Access occupancy graphs, average daily rates (ADR), and RevPAR charts to monitor overall performance.",
-    },
-    {
-      icon: <Settings className="h-6 w-6 text-primary" />,
-      title: "Clean, Intuitive Interface",
-      description: "A minimal design for a streamlined user experience that makes rate management simple.",
-    },
-    {
-      icon: <BarChart2 className="h-6 w-6 text-primary" />,
-      title: "Bulk Rate Editing",
-      description: "Quickly adjust rates in bulk or for specific dates, saving you time and effort.",
-    },
-  ]
 
   const faqItems = [
     {
@@ -180,25 +147,25 @@ export default function Home() {
         </div>
       </section>
 
-      {/* Features Section - Circular Gallery */}
+      {/* Features Section - Tabs */}
       <section
         id="features"
         className="w-full py-12 md:py-24 lg:py-32 bg-gray-50"
       >
         <div className="container px-4 md:px-6">
-          <div className="flex flex-col items-center justify-center space-y-4 text-center">
-            <div className="space-y-2">
-              <h2 className="text-3xl font-bold tracking-wider sm:text-4xl md:text-5xl">
+          <div className="flex flex-col items-center justify-center space-y-4 text-center ">
+            <div className="space-y-4 text-center max-w-[900px]">
+              <h2 className="text-3xl font-bold tracking-wider sm:text-4xl md:text-6xl">
                 Powerful Features to Boost Your Revenue
               </h2>
-              <p className="max-w-[900px] text-gray-500 md:text-xl/relaxed lg:text-base/relaxed xl:text-xl/relaxed">
+              <p className="max-w-[700px] mx-auto text-gray-500 md:text-xl/relaxed lg:text-base/relaxed xl:text-xl/relaxed">
                 MyRevManager provides all the tools you need to optimize your
                 property's pricing strategy and maximize revenue.
               </p>
             </div>
           </div>
-          <div className="mt-12">
-            <CircularGallery items={features} />
+          <div className="h-[10rem] md:h-[40rem] [perspective:1000px] relative b flex flex-col max-w-5xl mx-auto w-full  items-start justify-start my-20">
+            <TabsDemo />
           </div>
         </div>
       </section>
