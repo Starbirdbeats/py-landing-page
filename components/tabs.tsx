@@ -91,10 +91,10 @@ export function TabsDemo() {
     <div className="w-full space-y-4">
       <Tabs
         tabs={tabs}
-        containerClassName="flex flex-row items-center justify-center overflow-auto mt-10"
+        containerClassName="flex flex-row items-center justify-center overflow-auto md:mt-10"
         tabClassName="px-6 py-4 rounded-full text-md whitespace-nowrap"
         activeTabClassName="bg-[#2fafdf] dark:bg-zinc-800"
-        contentClassName="mt-32 h-auto bg-gradient-to-br from-[#2fa5df] to-[#a6d8f1] rounded-lg"
+        contentClassName="mt-24 md:mt-32 h-auto bg-gradient-to-br from-[#2fa5df] to-[#a6d8f1] rounded-lg"
       />
     </div>
   );

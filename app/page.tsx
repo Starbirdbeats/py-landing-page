@@ -3,7 +3,7 @@
 import Image from "next/image"
 import Link from "next/link"
 import { Button } from "@/components/ui/button"
-import { Check, BarChart2, Calendar, LineChart, Users, Settings, BarChart } from "lucide-react"
+import { Check, BarChart2, Calendar, LineChart, Users, Settings, BarChart, Menu } from "lucide-react"
 import { useState, useEffect } from "react"
 import { CircularGallery } from "@/components/circular-gallery"
 import { Accordion, AccordionContent, AccordionItem, AccordionTrigger } from "@/components/ui/accordion"
@@ -13,6 +13,8 @@ import { WavyBackground } from "@/components/ui/wavy-background"
 import { HoverEffect } from "@/components/ui/card-hover-effect"
 import { insights } from "@/utils/insights"
 import RotatingText from "@/components/jsrepo/RotatingText/RotatingText"
+import { CardSpotlight } from "@/components/ui/card-spotlight"
+import { Sheet, SheetTrigger, SheetContent, SheetTitle } from "@/components/ui/sheet"
 
 export default function Home() {
   const [scrolled, setScrolled] = useState(false)
@@ -60,14 +62,14 @@ export default function Home() {
   ]
 
   return (
-    <div className="flex min-h-screen flex-col">
-      {/* Navigation - Glassmorphic */}
+    <div className="flex min-h-screen flex-col overflow-x-hidden">
+      {/* Navigation - Glassmorphic with Mobile Menu */}
       <header
         className={`sticky top-0 z-40 w-full transition-all duration-300 ${
-          scrolled ? 'bg-white/70 backdrop-blur-md border-b' : 'bg-transparent'
+          scrolled ? 'bg-white/50 backdrop-blur-md border-b' : 'bg-transparent'
         }`}
       >
-        <div className="container flex h-16 items-center justify-between">
+        <div className="container flex h-20 items-center justify-between">
           <div className="flex items-center gap-2">
             <Link href="#top">
               <Image
@@ -80,6 +82,7 @@ export default function Home() {
             </Link>
           </div>
           <div className="flex items-center gap-6 ml-auto">
+            {/* Desktop Navigation */}
             <nav className="hidden md:flex items-center gap-6">
               <Link
                 href="#features"
@@ -105,19 +108,62 @@ export default function Home() {
               >
                 FAQ
               </Link>
-              <Link
-                href="#contact"
-                className="text-sm font-medium hover:text-primary"
-              >
-                Contact
-              </Link>
             </nav>
             <Button variant="outline" className="hidden md:inline-flex" asChild>
               <Link href="https://myrevmanager.com/sign-in">Sign In</Link>
             </Button>
-            <Button asChild>
-              <Link href="#pricing">Get Early Access</Link>
+            <Button className="hidden md:inline-flex" asChild>
+              <Link href="#pricing">Start Free Trial</Link>
             </Button>
+
+            {/* Mobile Menu */}
+            <Sheet>
+              <SheetTrigger asChild>
+                <Button variant="ghost" size="icon" className="md:hidden">
+                  <Menu className="h-6 w-6" />
+                  <span className="sr-only">Toggle menu</span>
+                </Button>
+              </SheetTrigger>
+              <SheetContent side="right" className="w-[300px] sm:w-[400px]">
+                <SheetTitle>Menu</SheetTitle>
+                <nav className="flex flex-col gap-6 mt-10">
+                  <Link
+                    href="#features"
+                    className="text-lg font-medium hover:text-primary"
+                  >
+                    Features
+                  </Link>
+                  <Link
+                    href="#how-it-works"
+                    className="text-lg font-medium hover:text-primary"
+                  >
+                    How It Works
+                  </Link>
+                  <Link
+                    href="#pricing"
+                    className="text-lg font-medium hover:text-primary"
+                  >
+                    Pricing
+                  </Link>
+                  <Link
+                    href="#faq"
+                    className="text-lg font-medium hover:text-primary"
+                  >
+                    FAQ
+                  </Link>
+                  <div className="flex flex-col gap-4 mt-4">
+                    <Button variant="outline" asChild>
+                      <Link href="https://myrevmanager.com/sign-in">
+                        Sign In
+                      </Link>
+                    </Button>
+                    <Button asChild>
+                      <Link href="#pricing">Start Free Trial</Link>
+                    </Button>
+                  </div>
+                </nav>
+              </SheetContent>
+            </Sheet>
           </div>
         </div>
       </header>
@@ -137,14 +183,11 @@ export default function Home() {
               </p>
               <div className="flex flex-col sm:flex-row gap-4 justify-center pt-4">
                 <Button size="lg" className="px-8">
-                  Get Early Access
-                </Button>
-                <Button size="lg" variant="outline" className="px-8">
-                  Book a Demo
+                  Start Free Trial
                 </Button>
               </div>
             </div>
-            <div className="w-full">
+            <div className="w-full hidden md:block">
               <MacbookScrollDemo />
             </div>
           </div>
@@ -154,10 +197,10 @@ export default function Home() {
       {/* Features Section - Tabs */}
       <section
         id="features"
-        className="w-full py-12 md:py-24 lg:py-32 bg-gray-50"
+        className="w-full py-32 md:py-24 lg:py-32 bg-gray-50"
       >
-        <div className="container px-4 md:px-6">
-          <div className="flex flex-col items-center justify-center space-y-4 text-center ">
+        <div className="container px-4 md:px-6 ">
+          <div className="flex flex-col items-center justify-center space-y-4 text-center">
             <div className="space-y-4 text-center max-w-[900px]">
               <h2 className="text-3xl font-bold tracking-wider sm:text-4xl md:text-6xl">
                 Powerful Features to Boost Your Revenue
@@ -168,7 +211,7 @@ export default function Home() {
               </p>
             </div>
           </div>
-          <div className="h-[10rem] md:h-[40rem] [perspective:1000px] relative b flex flex-col max-w-5xl mx-auto w-full  items-start justify-start my-20">
+          <div className="h-[40rem] md:h-[40rem] [perspective:1000px] relative b flex flex-col max-w-5xl mx-auto w-full  items-start justify-start my-20">
             <TabsDemo />
           </div>
         </div>
@@ -177,10 +220,10 @@ export default function Home() {
       {/* How It Works Section */}
       <section
         id="how-it-works"
-        className="w-full py-12 md:py-24 lg:py-32 bg-white"
+        className="w-full h-auto py-4 md:py-8 lg:py-12 bg-white "
       >
         <WavyBackground
-          className="flex max-w-7xl mx-auto pb-20"
+          className="flex max-w-7xl mx-auto mb-32 "
           backgroundFill="white"
           containerClassName="relative"
           colors={['#2fa5df', '#0080ff', '#00a8ff', '#0066cc']}
@@ -198,7 +241,7 @@ export default function Home() {
                     'priorities',
                     'targets',
                   ]}
-                  mainClassName="inline-block px-10 sm:px-2 md:px-3 bg-[#2fa5df] text-black overflow-hidden py-1 sm:py-1 md:py-2 justify-center rounded-lg w-auto"
+                  mainClassName="mt-4 inline-block px-10 sm:px-2 md:px-3 bg-[#2fa5df] text-black overflow-hidden py-1 sm:py-1 md:py-2 justify-center rounded-lg w-auto"
                   staggerFrom={'last'}
                   initial={{ y: '100%' }}
                   animate={{ y: 0 }}
@@ -206,11 +249,11 @@ export default function Home() {
                   staggerDuration={0.025}
                   splitLevelClassName="overflow-hidden pb-0.5 sm:pb-1 md:pb-1"
                   transition={{ type: 'spring', damping: 30, stiffness: 400 }}
-                  rotationInterval={5000}
+                  rotationInterval={3000}
                 />{' '}
                 and our product meet
               </h2>
-              <div className="max-w-5xl mx-auto px-8">
+              <div className="max-w-6xl mx-auto px-8 flex items-center justify-center">
                 <HoverEffect items={insights} className="" />
               </div>
             </div>
@@ -221,10 +264,10 @@ export default function Home() {
       {/* Pricing Section */}
       <section
         id="pricing"
-        className="w-full py-12 md:py-24 lg:py-32 bg-gray-50"
+        className="w-full py-6 md:py-12 lg:py-24 bg-gray-50"
       >
         <div className="container px-4 md:px-6">
-          <div className="flex flex-col items-center justify-center space-y-4 text-center">
+          <div className="flex flex-col items-center justify-center space-y-4 text-center py-4">
             <div className="space-y-2">
               <h2 className="text-3xl font-bold tracking-wider sm:text-4xl md:text-5xl">
                 Revenue Manager Pricing Packages
@@ -234,10 +277,11 @@ export default function Home() {
               </p>
             </div>
           </div>
+
           <div className="grid gap-6 md:grid-cols-2 lg:gap-12 mt-12">
             {/* Basic Package */}
-            <div className="flex flex-col p-6 bg-white rounded-lg shadow-sm relative">
-              <div className="absolute top-4 right-4 bg-blue-500 text-white text-xs font-medium px-2 py-1 rounded-full">
+            <div className="flex flex-col p-6 bg-white rounded-lg shadow-lg relative">
+              <div className="absolute top-4 right-4 bg-[#2fa5df] text-white text-xs font-medium px-2 py-1 rounded-full">
                 Essential
               </div>
               <h3 className="text-xl font-bold mb-4">Basic Package</h3>
@@ -245,46 +289,48 @@ export default function Home() {
                 <span className="text-5xl font-bold">R111</span>
                 <span className="text-gray-500 ml-2">room/pm</span>
               </div>
-              <p className="text-sm text-gray-500 mb-6">
+              {/* <p className="text-sm text-gray-500 mb-6">
                 Up to R5K referral ARR
-              </p>
-              <h4 className="font-medium mb-4">Includes:</h4>
+              </p> */}
+              <h4 className="font-medium mb-4">Features:</h4>
               <ul className="space-y-3 mb-8">
                 <li className="flex items-start">
-                  <Check className="h-5 w-5 text-primary mr-2 flex-shrink-0" />
-                  <span>Automated Rate Pushing</span>
+                  <Check className="h-5 w-5 text-[#2fa5df] mr-2 flex-shrink-0" />
+                  <span>Advanced Suggested Rates</span>
                 </li>
                 <li className="flex items-start">
-                  <Check className="h-5 w-5 text-primary mr-2 flex-shrink-0" />
-                  <span>Semper PMS Integration</span>
+                  <Check className="h-5 w-5 text-[#2fa5df] mr-2 flex-shrink-0" />
+                  <span>Data Analytics on Supply and Demand</span>
                 </li>
                 <li className="flex items-start">
-                  <Check className="h-5 w-5 text-primary mr-2 flex-shrink-0" />
-                  <span>Basic Demand Tracking</span>
+                  <Check className="h-5 w-5 text-[#2fa5df] mr-2 flex-shrink-0" />
+                  <span>Bulk Editing Rates</span>
                 </li>
                 <li className="flex items-start">
-                  <Check className="h-5 w-5 text-primary mr-2 flex-shrink-0" />
-                  <span>Calendar View & Bulk Editing</span>
+                  <Check className="h-5 w-5 text-[#2fa5df] mr-2 flex-shrink-0" />
+                  <span>Performance Insights</span>
                 </li>
               </ul>
               <div className="mt-auto">
-                <div className="bg-blue-50 p-4 rounded-lg mb-6">
+                <div className="bg-transparent p-4 rounded-lg mb-6">
                   <div className="flex items-center mb-2">
-                    <div className="mr-2 text-blue-500">⚡</div>
-                    <span className="font-medium">
+                    <div className="mr-2">⚡</div>
+                    <span className="font-medium text-black">
                       Early Bird Offer: 50% Off
                     </span>
                   </div>
-                  <div className="text-2xl font-bold">R55 room/pm</div>
+                  <div className="text-2xl font-bold text-black">
+                    R55 room/pm
+                  </div>
                 </div>
-                <Button className="w-full" variant="outline">
-                  Get Early Access
+                <Button className="w-full text-lg hover:bg-[#0000ff]" size="lg">
+                  Start Free Trial
                 </Button>
               </div>
             </div>
 
             {/* Pro Package */}
-            <div className="flex flex-col p-6 bg-blue-500 text-white rounded-lg shadow-sm relative">
+            <div className="flex flex-col p-6 bg-[#2fa5df] text-white rounded-lg shadow-lg relative">
               <div className="absolute top-4 right-4 bg-white text-blue-500 text-xs font-medium px-2 py-1 rounded-full">
                 Recommended
               </div>
@@ -293,28 +339,30 @@ export default function Home() {
                 <span className="text-5xl font-bold">R150</span>
                 <span className="text-blue-100 ml-2">room/pm</span>
               </div>
-              <p className="text-sm text-blue-100 mb-6">
+              {/* <p className="text-sm text-blue-100 mb-6">
                 Up to R50K referral ARR
-              </p>
-              <h4 className="font-medium mb-4">Everything in Basic, Plus:</h4>
+              </p> */}
+              <h4 className="font-medium mb-4">Everything in Basic, plus:</h4>
               <ul className="space-y-3 mb-8">
                 <li className="flex items-start">
                   <Check className="h-5 w-5 text-white mr-2 flex-shrink-0" />
-                  <span>Full Features</span>
+                  <span>Advanced Suggested Rates with Competitors Pricing</span>
                 </li>
                 <li className="flex items-start">
                   <Check className="h-5 w-5 text-white mr-2 flex-shrink-0" />
-                  <span>
-                    Includes competitor pricing & rate change tracking
-                  </span>
+                  <span>Comprehensive Competitors Rate Analysis</span>
                 </li>
                 <li className="flex items-start">
                   <Check className="h-5 w-5 text-white mr-2 flex-shrink-0" />
-                  <span>Premium SLAs</span>
+                  <span>Tracked Rate Changes Analytics</span>
+                </li>
+                <li className="flex items-start">
+                  <Check className="h-5 w-5 text-white mr-2 flex-shrink-0" />
+                  <span>Exclusive Entry into New Features</span>
                 </li>
               </ul>
               <div className="mt-auto">
-                <div className="bg-blue-600 p-4 rounded-lg mb-6">
+                <div className="bg-transparent p-4 rounded-lg mb-6">
                   <div className="flex items-center mb-2">
                     <div className="mr-2">⚡</div>
                     <span className="font-medium">
@@ -323,17 +371,13 @@ export default function Home() {
                   </div>
                   <div className="text-2xl font-bold">R75 room/pm</div>
                 </div>
-                <Button className="w-full bg-white text-blue-500 hover:bg-blue-50">
-                  Get Early Access
+                <Button
+                  className="w-full bg-white text-[#2fa5df] hover:bg-[#0000ff] hover:text-white text-lg"
+                  size="lg"
+                >
+                  Start Free Trial
                 </Button>
               </div>
-            </div>
-          </div>
-          <div className="mt-12 p-8 bg-blue-50 rounded-lg">
-            <div className="flex flex-col md:flex-row items-center justify-between">
-              <h3 className="text-xl font-bold mb-4 md:mb-0">
-                Early Bird Discount: Limited time only for first time adopters
-              </h3>
             </div>
           </div>
         </div>
@@ -372,34 +416,31 @@ export default function Home() {
       {/* CTA Section - Rounded Box Container */}
       <section id="contact" className="w-full py-12 md:py-24 lg:py-32 bg-white">
         <div className="container px-4 md:px-6">
-          <div className="bg-primary rounded-3xl p-8 md:p-12">
-            <div className="flex flex-col items-center justify-center space-y-4 text-center">
-              <div className="space-y-2">
+          <CardSpotlight
+            className="p-8 md:p-12 w-full bg-[#2fa5df] border-none rounded-3xl overflow-hidden"
+            color="#2fa5df"
+            radius={500}
+          >
+            <div className="flex flex-col items-center justify-center space-y-8 text-center z-20">
+              <div className="space-y-2 z-20">
                 <h2 className="text-3xl font-bold tracking-wider sm:text-4xl md:text-5xl text-white">
                   Ready to Optimize Your Property Revenue?
                 </h2>
-                <p className="max-w-[900px] text-primary-foreground md:text-xl/relaxed lg:text-base/relaxed xl:text-xl/relaxed">
+                <p className="max-w-[900px] mx-auto text-primary-foreground md:text-xl/relaxed lg:text-base/relaxed xl:text-xl/relaxed">
                   Join hundreds of property managers who are maximizing their
                   revenue with MyRevManager.
                 </p>
               </div>
-              <div className="flex flex-col gap-2 min-[400px]:flex-row pt-4">
+              <div className="flex flex-col gap-2 min-[400px]:flex-row mx-auto z-20">
                 <Button
                   size="lg"
-                  className="bg-white text-primary hover:bg-gray-100 px-8"
+                  className="bg-[#0000ff] text-lg text-white hover:bg-white hover:text-black px-8"
                 >
-                  Get Early Access
-                </Button>
-                <Button
-                  size="lg"
-                  variant="outline"
-                  className="border-white text-white hover:bg-primary-foreground/10 px-8"
-                >
-                  Book a Demo
+                  Start Free Trial
                 </Button>
               </div>
             </div>
-          </div>
+          </CardSpotlight>
         </div>
       </section>
 
@@ -430,12 +471,6 @@ export default function Home() {
               className="text-sm font-medium hover:text-primary"
             >
               FAQ
-            </Link>
-            <Link
-              href="#contact"
-              className="text-sm font-medium hover:text-primary"
-            >
-              Contact
             </Link>
           </div>
           <div className="mt-6 text-center">

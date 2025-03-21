@@ -87,7 +87,7 @@ export const CardTitle = ({
   return (
     <h4
       className={cn(
-        'min-h-[3rem] text-black text-2xl font-bold tracking-wide my-4',
+        'min-h-[4rem] text-black text-2xl font-bold tracking-wide my-4',
         className
       )}
     >
