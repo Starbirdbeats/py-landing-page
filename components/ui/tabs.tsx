@@ -38,10 +38,10 @@ export const Tabs = ({
 
   return (
     <>
-      <div className="flex items-start justify-start overflow-x-auto scrollbar-hide">
+      <div className="flex items-start justify-start xl:justify-center overflow-x-auto xl:overflow-x-visible scrollbar-hide">
         <div
           className={cn(
-            '[perspective:1000px] flex flex-row items-center justify-center min-w-max',
+            '[perspective:1000px] flex flex-row items-center justify-center min-w-max p-2',
             containerClassName
           )}
         >

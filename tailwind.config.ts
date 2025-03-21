@@ -9,9 +9,6 @@ const config: Config = {
     './src/**/*.{ts,tsx}',
     '*.{js,ts,jsx,tsx,mdx}',
   ],
-  plugins: [
-    require('tailwind-scrollbar-hide'),
-  ],
   theme: {
     container: {
       center: true,
@@ -91,7 +88,8 @@ const config: Config = {
       },
     },
   },
-  plugins: [require('tailwindcss-animate')],
+
+  plugins: [require('tailwindcss-animate'), require('tailwind-scrollbar-hide')],
 };
 
 export default config
