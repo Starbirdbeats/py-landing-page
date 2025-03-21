@@ -53,7 +53,7 @@ const features = [
     title: 'Bulk Rate Editing',
     description:
       'Quickly adjust rates in bulk or for specific dates, saving you time and effort.',
-    image: ['/single-edit.png', '/bulk-edit.png'],
+    image: ['/bulk-edit.png'],
   },
 ];
 
@@ -88,13 +88,13 @@ export function TabsDemo() {
   }));
 
   return (
-    <div className="w-full space-y-4">
+    <div className="max-w-5xl w-full space-y-4 h-full items-center">
       <Tabs
         tabs={tabs}
-        containerClassName="flex flex-row items-center justify-center overflow-auto md:mt-10"
-        tabClassName="px-6 py-4 rounded-full text-md whitespace-nowrap"
+        containerClassName="flex flex-row items-center justify-center"
+        tabClassName="px-4 py-4 rounded-full text-md whitespace-nowrap"
         activeTabClassName="bg-[#2fafdf] dark:bg-zinc-800"
-        contentClassName="mt-24 md:mt-32 h-auto bg-gradient-to-br from-[#2fa5df] to-[#a6d8f1] rounded-lg"
+        contentClassName="max-w-full mt-24 md:mt-32 h-auto bg-gradient-to-br from-[#2fa5df] to-[#a6d8f1] rounded-lg"
       />
     </div>
   );

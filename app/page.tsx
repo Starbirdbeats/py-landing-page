@@ -62,15 +62,15 @@ export default function Home() {
   ]
 
   return (
-    <div className="flex min-h-screen flex-col overflow-x-hidden">
+    <div className="flex min-h-screen flex-col overflow-x-hidden pt-20">
       {/* Navigation - Glassmorphic with Mobile Menu */}
       <header
-        className={`sticky top-0 z-40 w-full transition-all duration-300 ${
+        className={`fixed top-0 z-40 w-full transition-all duration-300 ${
           scrolled ? 'bg-white/50 backdrop-blur-md border-b' : 'bg-transparent'
         }`}
       >
-        <div className="container flex h-20 items-center justify-between">
-          <div className="flex items-center gap-2">
+        <div className="container flex h-20 md:h-20 items-center justify-between">
+          <div className="flex items-center gap-6">
             <Link href="#top">
               <Image
                 src="/logo-cropped.png"
@@ -120,7 +120,7 @@ export default function Home() {
             <Sheet>
               <SheetTrigger asChild>
                 <Button variant="ghost" size="icon" className="md:hidden">
-                  <Menu className="h-6 w-6" />
+                  <Menu className="!h-7 !w-7"/>
                   <span className="sr-only">Toggle menu</span>
                 </Button>
               </SheetTrigger>
@@ -211,7 +211,7 @@ export default function Home() {
               </p>
             </div>
           </div>
-          <div className="h-[40rem] md:h-[40rem] [perspective:1000px] relative b flex flex-col max-w-5xl mx-auto w-full  items-start justify-start my-20">
+          <div className="h-[40rem] md:h-[40rem] [perspective:1000px] relative flex flex-col mx-auto w-full !items-center justify-start my-20">
             <TabsDemo />
           </div>
         </div>
@@ -220,7 +220,7 @@ export default function Home() {
       {/* How It Works Section */}
       <section
         id="how-it-works"
-        className="w-full h-auto py-4 md:py-8 lg:py-12 bg-white "
+        className="w-full h-auto py-60 md:py-8 lg:py-12 bg-white "
       >
         <WavyBackground
           className="flex max-w-7xl mx-auto mb-32 "
@@ -237,8 +237,6 @@ export default function Home() {
                     'needs',
                     'vision',
                     'strategy',
-                    'objectives',
-                    'priorities',
                     'targets',
                   ]}
                   mainClassName="mt-4 inline-block px-10 sm:px-2 md:px-3 bg-[#2fa5df] text-black overflow-hidden py-1 sm:py-1 md:py-2 justify-center rounded-lg w-auto"
@@ -268,11 +266,11 @@ export default function Home() {
       >
         <div className="container px-4 md:px-6">
           <div className="flex flex-col items-center justify-center space-y-4 text-center py-4">
-            <div className="space-y-2">
+            <div className="space-y-2 max-w-sm md:max-w-full">
               <h2 className="text-3xl font-bold tracking-wider sm:text-4xl md:text-5xl">
                 Revenue Manager Pricing Packages
               </h2>
-              <p className="max-w-[900px] text-gray-500 md:text-xl/relaxed lg:text-base/relaxed xl:text-xl/relaxed">
+              <p className="md:max-w-[900px] text-gray-500 md:text-xl/relaxed lg:text-base/relaxed xl:text-xl/relaxed">
                 Choose the plan that best fits your property's needs and budget.
               </p>
             </div>

@@ -9,6 +9,9 @@ const config: Config = {
     './src/**/*.{ts,tsx}',
     '*.{js,ts,jsx,tsx,mdx}',
   ],
+  plugins: [
+    require('tailwind-scrollbar-hide'),
+  ],
   theme: {
     container: {
       center: true,
