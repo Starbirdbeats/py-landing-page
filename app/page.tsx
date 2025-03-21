@@ -62,7 +62,7 @@ export default function Home() {
   ]
 
   return (
-    <div className="flex min-h-screen flex-col overflow-x-hidden pt-20">
+    <div className="flex min-h-screen flex-col overflow-x-hidden md:pt-20">
       {/* Navigation - Glassmorphic with Mobile Menu */}
       <header
         className={`fixed top-0 z-40 w-full transition-all duration-300 ${
@@ -169,7 +169,7 @@ export default function Home() {
       </header>
 
       {/* Hero Section - Centered */}
-      <section className="w-full py-12 md:py-24 lg:py-32 bg-white">
+      <section className="flex w-full h-svh md:h-full md:py-20 lg:pt-40 items-center bg-white">
         <div className="container px-4 md:px-6">
           <div className="flex flex-col items-center text-center">
             <div className="space-y-4 max-w-5xl">
@@ -211,7 +211,7 @@ export default function Home() {
               </p>
             </div>
           </div>
-          <div className="h-[40rem] md:h-[40rem] [perspective:1000px] relative flex flex-col mx-auto w-full !items-center justify-start my-20">
+          <div className="h-[40rem] md:h-[40rem] [perspective:1000px] relative flex flex-col mx-auto w-full !items-center justify-start mb-40 mt-20">
             <TabsDemo />
           </div>
         </div>

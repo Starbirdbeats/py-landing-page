@@ -43,7 +43,7 @@ const features = [
   },
   {
     icon: <Settings className="h-6 w-6 text-black" />,
-    title: 'Clean, Intuitive Interface',
+    title: 'Intuitive Interface',
     description:
       'A minimal design for a streamlined user experience that makes rate management simple.',
     image: ['/performance.png'],
@@ -64,7 +64,7 @@ export function TabsDemo() {
     content: (
       <div className="flex flex-col items-center justify-center p-10">
         <div className="mb-4 ">{feature.icon}</div>
-        <h3 className="text-2xl font-bold mb-2">{feature.title}</h3>
+        <h3 className="text-2xl font-bold mb-2 text-center">{feature.title}</h3>
         <p className="text-base text-center max-w-lg">{feature.description}</p>
         {Array.isArray(feature.image) && (
           <div className="flex gap-4 mt-4">
@@ -88,7 +88,7 @@ export function TabsDemo() {
   }));
 
   return (
-    <div className="max-w-5xl w-full space-y-4 h-full items-center">
+    <div className="max-w-5xl w-full h-full items-center">
       <Tabs
         tabs={tabs}
         containerClassName="flex flex-row items-center justify-center"
