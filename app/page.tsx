@@ -120,7 +120,7 @@ export default function Home() {
             <Sheet>
               <SheetTrigger asChild>
                 <Button variant="ghost" size="icon" className="md:hidden">
-                  <Menu className="!h-7 !w-7"/>
+                  <Menu className="!h-7 !w-7" />
                   <span className="sr-only">Toggle menu</span>
                 </Button>
               </SheetTrigger>
@@ -169,7 +169,7 @@ export default function Home() {
       </header>
 
       {/* Hero Section - Centered */}
-      <section className="flex w-full h-svh md:h-full md:py-20 lg:pt-40 items-center bg-white">
+      <section className="flex w-full h-svh md:h-full md:py-20 md:mt-20 lg:pt-40 items-center bg-white">
         <div className="container px-4 md:px-6">
           <div className="flex flex-col items-center text-center">
             <div className="space-y-4 max-w-5xl">
@@ -187,7 +187,7 @@ export default function Home() {
                 </Button>
               </div>
             </div>
-            <div className="w-full hidden md:block">
+            <div className="w-full hidden md:block h-full">
               <MacbookScrollDemo />
             </div>
           </div>
@@ -195,10 +195,7 @@ export default function Home() {
       </section>
 
       {/* Features Section - Tabs */}
-      <section
-        id="features"
-        className="w-full py-32 md:py-24 lg:py-32 bg-gray-50"
-      >
+      <section id="features" className="w-full md:py-24 lg:py-32 bg-gray-50">
         <div className="container px-4 md:px-6 ">
           <div className="flex flex-col items-center justify-center space-y-4 text-center">
             <div className="space-y-4 text-center max-w-[900px]">
@@ -220,25 +217,20 @@ export default function Home() {
       {/* How It Works Section */}
       <section
         id="how-it-works"
-        className="w-full h-auto py-60 md:py-8 lg:py-12 bg-white "
+        className="w-full pb-44 pt-20 sm:py-0"
       >
         <WavyBackground
-          className="flex max-w-7xl mx-auto mb-32 "
+          className="max-w-7xl mx-auto"
           backgroundFill="white"
           containerClassName="relative"
           colors={['#2fa5df', '#0080ff', '#00a8ff', '#0066cc']}
         >
-          <div className="container px-4 md:px-6 max-w-[1200px] space-y-4">
-            <div className="bg-none p-8 md:p-12">
-              <h2 className="text-6xl font-bold tracking-wider text-center mb-12">
+          <div className="container px-4 md:px-6 sm:max-w-[1200px] space-y-12">
+            <div className="flex flex-col items-center bg-none">
+              <h2 className="text-4xl md:text-6xl font-bold tracking-wider text-center mb-12 max-w-[300px] sm:max-w-full">
                 Where your{' '}
                 <RotatingText
-                  texts={[
-                    'needs',
-                    'vision',
-                    'strategy',
-                    'targets',
-                  ]}
+                  texts={['needs', 'vision', 'strategy', 'targets']}
                   mainClassName="mt-4 inline-block px-10 sm:px-2 md:px-3 bg-[#2fa5df] text-black overflow-hidden py-1 sm:py-1 md:py-2 justify-center rounded-lg w-auto"
                   staggerFrom={'last'}
                   initial={{ y: '100%' }}
