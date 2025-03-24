@@ -15,9 +15,12 @@ import { insights } from "@/utils/insights"
 import RotatingText from "@/components/jsrepo/RotatingText/RotatingText"
 import { CardSpotlight } from "@/components/ui/card-spotlight"
 import { Sheet, SheetTrigger, SheetContent, SheetTitle } from "@/components/ui/sheet"
+import Header from "@/components/Header"
+import Footer from "@/components/Footer"
 
 export default function Home() {
   const [scrolled, setScrolled] = useState(false)
+  const [isMenuOpen, setIsMenuOpen] = useState(false);
 
   useEffect(() => {
     const handleScroll = () => {
@@ -64,109 +67,7 @@ export default function Home() {
   return (
     <div className="flex min-h-screen flex-col overflow-x-hidden md:pt-20">
       {/* Navigation - Glassmorphic with Mobile Menu */}
-      <header
-        className={`fixed top-0 z-40 w-full transition-all duration-300 ${
-          scrolled ? 'bg-white/50 backdrop-blur-md border-b' : 'bg-transparent'
-        }`}
-      >
-        <div className="container flex h-20 md:h-20 items-center justify-between">
-          <div className="flex items-center gap-6">
-            <Link href="#top">
-              <Image
-                src="/logo-cropped.png"
-                alt="Property Yield Logo"
-                width={40}
-                height={40}
-                className="h-10 w-10"
-              />
-            </Link>
-          </div>
-          <div className="flex items-center gap-6 ml-auto">
-            {/* Desktop Navigation */}
-            <nav className="hidden md:flex items-center gap-6">
-              <Link
-                href="#features"
-                className="text-sm font-medium hover:text-primary"
-              >
-                Features
-              </Link>
-              <Link
-                href="#how-it-works"
-                className="text-sm font-medium hover:text-primary"
-              >
-                How It Works
-              </Link>
-              <Link
-                href="#pricing"
-                className="text-sm font-medium hover:text-primary"
-              >
-                Pricing
-              </Link>
-              <Link
-                href="#faq"
-                className="text-sm font-medium hover:text-primary"
-              >
-                FAQ
-              </Link>
-            </nav>
-            <Button variant="outline" className="hidden md:inline-flex" asChild>
-              <Link href="https://myrevmanager.com/sign-in">Sign In</Link>
-            </Button>
-            <Button className="hidden md:inline-flex" asChild>
-              <Link href="#pricing">Start Free Trial</Link>
-            </Button>
-
-            {/* Mobile Menu */}
-            <Sheet>
-              <SheetTrigger asChild>
-                <Button variant="ghost" size="icon" className="md:hidden">
-                  <Menu className="!h-7 !w-7" />
-                  <span className="sr-only">Toggle menu</span>
-                </Button>
-              </SheetTrigger>
-              <SheetContent side="right" className="w-[300px] sm:w-[400px]">
-                <SheetTitle>Menu</SheetTitle>
-                <nav className="flex flex-col gap-6 mt-10">
-                  <Link
-                    href="#features"
-                    className="text-lg font-medium hover:text-primary"
-                  >
-                    Features
-                  </Link>
-                  <Link
-                    href="#how-it-works"
-                    className="text-lg font-medium hover:text-primary"
-                  >
-                    How It Works
-                  </Link>
-                  <Link
-                    href="#pricing"
-                    className="text-lg font-medium hover:text-primary"
-                  >
-                    Pricing
-                  </Link>
-                  <Link
-                    href="#faq"
-                    className="text-lg font-medium hover:text-primary"
-                  >
-                    FAQ
-                  </Link>
-                  <div className="flex flex-col gap-4 mt-4">
-                    <Button variant="outline" asChild>
-                      <Link href="https://myrevmanager.com/sign-in">
-                        Sign In
-                      </Link>
-                    </Button>
-                    <Button asChild>
-                      <Link href="#pricing">Start Free Trial</Link>
-                    </Button>
-                  </div>
-                </nav>
-              </SheetContent>
-            </Sheet>
-          </div>
-        </div>
-      </header>
+      <Header />
 
       {/* Hero Section - Centered */}
       <section className="flex w-full h-svh md:h-full md:py-20 md:mt-20 lg:pt-40 items-center bg-white">
@@ -195,8 +96,11 @@ export default function Home() {
       </section>
 
       {/* Features Section - Tabs */}
-      <section id="features" className="w-full md:py-24 lg:py-32 bg-gray-50">
-        <div className="container px-4 md:px-6 ">
+      <section
+        id="features"
+        className="w-full md:py-24 lg:py-32 bg-gray-50"
+      >
+        <div className="flex flex-col flex-grow-1 container px-4 md:px-6 overflow-hidden md:pb-48">
           <div className="flex flex-col items-center justify-center space-y-4 text-center">
             <div className="space-y-4 text-center max-w-[900px]">
               <h2 className="text-3xl font-bold tracking-wider sm:text-4xl md:text-6xl">
@@ -215,10 +119,7 @@ export default function Home() {
       </section>
 
       {/* How It Works Section */}
-      <section
-        id="how-it-works"
-        className="w-full pb-44 pt-20 sm:py-0"
-      >
+      <section id="how-it-works" className="w-full pb-44 pt-20 sm:py-0">
         <WavyBackground
           className="max-w-7xl mx-auto"
           backgroundFill="white"
@@ -435,41 +336,7 @@ export default function Home() {
       </section>
 
       {/* Footer - Simplified */}
-      <footer className="w-full py-6 bg-white text-black">
-        <div className="container px-20 md:px-32 lg:px-48">
-          <div className="flex flex-col md:flex-row justify-center items-center gap-6">
-            <Link
-              href="#features"
-              className="text-sm font-medium hover:text-primary"
-            >
-              Features
-            </Link>
-            <Link
-              href="#how-it-works"
-              className="text-sm font-medium hover:text-primary"
-            >
-              How It Works
-            </Link>
-            <Link
-              href="#pricing"
-              className="text-sm font-medium hover:text-primary"
-            >
-              Pricing
-            </Link>
-            <Link
-              href="#faq"
-              className="text-sm font-medium hover:text-primary"
-            >
-              FAQ
-            </Link>
-          </div>
-          <div className="mt-6 text-center">
-            <p className="text-sm">
-              © 2025 Property Yield. All rights reserved.
-            </p>
-          </div>
-        </div>
-      </footer>
+      <Footer />
     </div>
   );
 }
